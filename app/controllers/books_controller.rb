@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 
   def create
+    @user = current_user
     @book = Book.new(book_params)
     if @book.save
       flash[:notice] = "Book was successfully created."
@@ -11,11 +12,15 @@ class BooksController < ApplicationController
     end
   end
 
+  def edit
+    @book = Book.find(params[:id])
+  end
+
   def index
     @books = Book.all
     @book = Book.new()
     @user = current_user
-    
+
   end
 
   def show
@@ -24,7 +29,8 @@ class BooksController < ApplicationController
 
   def destroy
   end
-  
+
+  private
   def book_params
     params.require(:book).permit(:title, :body, :user_id)
   end

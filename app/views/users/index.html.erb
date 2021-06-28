@@ -1,4 +1,5 @@
 <h2>User info</h2>
+<div><%= attachment_image_tag @user, :image, :fill, 60, 60, format: 'jpeg' %></div>
 <div>
   <p>name</p>
   <p><%= @user.name %></p>
@@ -7,10 +8,11 @@
   <p>introduction</p>
   <p><%= @user.introduction %></p>
 </div>
+<%= link_to "編集", edit_user_path(@user.id) %>
 
 <h2>New book</h2>
 <% if @book.errors.any? %>
-  can't be blankerror
+  can't be blank error
 <% end %>
 <%= form_with model: @book, local:true do |f| %>
   <h4>Title</h4>
@@ -20,20 +22,19 @@
   <%= f.submit 'Create Book',class:'btn btn-primary' %>
 <% end %>
 
-<h2>Books</h2>
+<h2>Users</h2>
 <table>
   <thead>
+    <th width="192" heigth="24">image</th>
+    <th width="400" heigth="24">name</th>
     <th width="145.38" heigth="24" colspan="1"></th>
-    <th width="192" heigth="24">Title</th>
-    <th width="400" heigth="24">Opinion</th>
   </thead>
   <tbody>
-    <% @books.each do |book| %>
+    <% @users.each do |user| %>
     <tr>
-    <%= link_to 'Show', book_path(book.id) %>
-      <td></td>
-      <td><%= book.title %></td>
-      <td><%= book.body %></td>
+      <td><%= attachment_image_tag user, :image, :fill, 60, 60, format: 'jpeg' %></td>
+      <td><%= user.name %></td>
+      <td><%= link_to 'Show', user_path(user.id) %></td>
     </tr>
     <% end %>
   </tbody>
