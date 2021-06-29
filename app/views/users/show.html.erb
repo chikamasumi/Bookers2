@@ -8,7 +8,7 @@
   <p>introduction</p>
   <p><%= @user.introduction %></p>
 </div>
-<%= link_to "編集", edit_book_path(@book.id) %>
+<%= link_to "編集", edit_user_path(@user) %>
 
 <h2>New book</h2>
 <% if @book.errors.any? %>
