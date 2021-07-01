@@ -14,3 +14,24 @@
  *= require_self
  */
 @import "bootstrap";
+
+* {
+  margin: o;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+div {
+  display: block;
+}

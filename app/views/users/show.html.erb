@@ -1,5 +1,5 @@
 <h2>User info</h2>
-<div><%= attachment_image_tag @user, :image, :fill, 60, 60, format: 'jpeg' %></div>
+<div><%= attachment_image_tag @user, :image, :fill, 60, 60, fallback:"no_image.jpg", format: 'jpeg' %></div>
 <div>
   <p>name</p>
   <p><%= @user.name %></p>

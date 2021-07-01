@@ -1,41 +1,55 @@
-<h2>User info</h2>
-<div><%= attachment_image_tag @user, :image, :fill, 60, 60, format: 'jpeg' %></div>
-<div>
-  <p>name</p>
-  <p><%= @user.name %></p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <h2>User info</h2>
+      <div><%= attachment_image_tag @user, :image, :fill, 60, 60, fallback:"no_image.jpg", format: 'jpeg' %></div>
+      <table class="table">
+        <tbody>
+          <tr></tr>
+          <tr>
+            <th>name</th>
+            <th><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>introduction</th>
+            <th><%= @user.introduction %></th>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <%= link_to "編集", edit_user_path(@user.id), class:'btn btn-outline-secondary btn-block' %>
+      </div>
+      <h2>New book</h2>
+      <% if @book.errors.any? %>
+        can't be blank error
+      <% end %>
+      <%= form_with model: @book, local:true do |f| %>
+        <h4>Title</h4>
+        <%= f.text_field :title %>
+        <h4>Opinion</h4>
+        <%= f.text_area :body %>
+        <%= f.submit 'Create Book',class:'btn btn-primary' %>
+      <% end %>
+      <div class="col-md-8 offset-md-1">
+        <h2>Users</h2>
+        <table>
+          <thead>
+            <th width="123" heigth="50">image</th>
+            <th width="240" heigth="50">name</th>
+            <th width="150" heigth="50"></th>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+            <tr>
+              <td><%= attachment_image_tag user, :image, :fill, 60, 60, fallback:"no_image.jpg",  format: 'jpeg' %></td>
+              <td><%= user.name %></td>
+              <td><%= link_to 'Show', user_path(user.id) %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
-<div>
-  <p>introduction</p>
-  <p><%= @user.introduction %></p>
-</div>
-<%= link_to "編集", edit_user_path(@user.id) %>
-
-<h2>New book</h2>
-<% if @book.errors.any? %>
-  can't be blank error
-<% end %>
-<%= form_with model: @book, local:true do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
-  <%= f.submit 'Create Book',class:'btn btn-primary' %>
-<% end %>
-
-<h2>Users</h2>
-<table>
-  <thead>
-    <th width="192" heigth="24">image</th>
-    <th width="400" heigth="24">name</th>
-    <th width="145.38" heigth="24" colspan="1"></th>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-    <tr>
-      <td><%= attachment_image_tag user, :image, :fill, 60, 60, format: 'jpeg' %></td>
-      <td><%= user.name %></td>
-      <td><%= link_to 'Show', user_path(user.id) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>

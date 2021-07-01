@@ -1,10 +1,16 @@
 <h2>User info</h2>
+<%= form_with model: @user, local:true do |f| %>
 <div>
   <p>name</p>
-  <p><%= @user.name %></p>
+  <p><%= f.text_field :name %></p>
 </div>
-<div><%= f.attachment_field :image %></div>
+<div>
+  <p>image</p>
+  <p><%= f.attachment_field :image %></p>
+</div>
 <div>
   <p>introduction</p>
-  <p><%= @user.introduction %></p>
+  <p><%= f.text_area :introduction %></p>
 </div>
+<%= f.submit 'Update User', class:'btn btn-secondary' %>
+<% end %>
