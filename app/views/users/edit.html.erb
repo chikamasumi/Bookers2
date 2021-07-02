@@ -1,4 +1,7 @@
 <h2>User info</h2>
+<% if @user.errors.any? %>
+  can't be blank error
+<% end %>
 <%= form_with model: @user, local:true do |f| %>
 <div>
   <p>name</p>
