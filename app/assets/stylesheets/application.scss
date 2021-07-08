@@ -21,7 +21,11 @@
   box-sizing: border-box;
 }
 
-row {
+.h1 {
+  text-align: senter;
+}
+
+.row {
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;

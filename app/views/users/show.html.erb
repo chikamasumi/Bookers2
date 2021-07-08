@@ -1,19 +1,26 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
 <%= render 'books/list', book: @book, user: @user %>
-
-<h2>Books</h2>
-<table>
-  <thead>
-    <th width="145.38" heigth="24" colspan="1"></th>
-    <th width="192" heigth="24">Title</th>
-    <th width="400" heigth="24">Opinion</th>
-  </thead>
-  <tbody>
-    <% @books.each do |book| %>
-    <tr>
-      <td><%= attachment_image_tag @user, :image, :fill, 60, 60, format: 'jpeg' %></td>
-      <td><%= book.title %></td>
-      <td><%= book.body %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table>
+        <thead>
+          <th width="145.38" heigth="24" colspan="1"></th>
+          <th width="192" heigth="24">Title</th>
+          <th width="400" heigth="24">Opinion</th>
+        </thead>
+        <tbody>
+          <% @books.each do |book| %>
+          <tr>
+            <td><%= attachment_image_tag @user, :image, :fill, 60, 60, format: 'jpeg' %></td>
+            <td><%= book.title %></td>
+            <td><%= book.body %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
