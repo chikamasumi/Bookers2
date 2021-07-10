@@ -15,9 +15,9 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          
+
             <span><%= link_to "Bookers", root_path, class:"navbar-brand text-light" %></span>
-          
+
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -28,13 +28,13 @@
               <%= link_to "Home", user_path(current_user.id), class:"fas fa-solid fas fa-home text-light" %>
             </li>
             <li>
-              <%= link_to "User", users_path, class:"fasfa-solid fas fa-users text-light" %>
+              <%= link_to "Users", users_path, class:"fasfa-solid fas fa-users text-light" %>
             </li>
             <li>
-              <%= link_to "Bookers", books_path, class:"fas fa-book-open text-light" %>
+              <%= link_to "Books", books_path, class:"fas fa-book-open text-light" %>
             </li>
             <li>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt text-light" %>
+              <%= link_to "logout", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt text-light" %>
             </li>
             <% else %>
             <li>

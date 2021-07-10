@@ -1,19 +1,26 @@
-<h2>User info</h2>
-<% if @user.errors.any? %>
-  can't be blank error
-<% end %>
-<%= form_with model: @user, local:true do |f| %>
-<div>
-  <p>name</p>
-  <p><%= f.text_field :name %></p>
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>User info</h2>
+      <% if @user.errors.any? %>
+        is too short (minimum is 2 characters)
+      <% end %>
+      <%= form_with model: @user, local:true do |f| %>
+      <div>
+        <p>name</p>
+        <p><%= f.text_field :name %></p>
+      </div>
+      <div>
+        <p>image</p>
+        <p><%= f.attachment_field :profile_image %></p>
+      </div>
+      <div>
+        <p>introduction</p>
+        <p><%= f.text_area :introduction %></p>
+      </div>
+      <%= f.submit 'Update User', class:'btn btn-secondary' %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<div>
-  <p>image</p>
-  <p><%= f.attachment_field :image %></p>
-</div>
-<div>
-  <p>introduction</p>
-  <p><%= f.text_area :introduction %></p>
-</div>
-<%= f.submit 'Update User', class:'btn btn-secondary' %>
-<% end %>
